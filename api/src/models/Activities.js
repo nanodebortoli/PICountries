@@ -4,7 +4,7 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
-      default: DataTypes.UUIDV4
+      defaultValue: DataTypes.UUIDV4
     },
     name: {
       type: DataTypes.STRING
@@ -25,5 +25,5 @@ module.exports = (sequelize) => {
         isIn: ['Verano', 'Otoño', 'Primavera', 'Invierno']
       }
     }
-  })
+  }, {timestamps: false})
 };

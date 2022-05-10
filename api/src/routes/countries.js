@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { Country } = require('../db');
+const { Country, Activity } = require('../db');
 const { Op } = require('sequelize');
 const axios = require('axios');
 const router = Router();
@@ -43,7 +43,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
-  Country.findByPk(id.toUpperCase())
+  Country.findByPk(id.toUpperCase(), {include: Activity})
   .then((country) => {
     if(!country) return res.status(404).send(`El código ${id.toUpperCase()} no corresponde a un pais existente`);
     return res.json(country);
