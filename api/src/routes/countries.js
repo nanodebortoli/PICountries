@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
     data.data.map(async country => {
       let obj = {
         id: country.cca3,
-        name: country.translations.spa.common,
+        name: country.name.common,
         flag: country.flags[1],
         continent: country.continents[0],
         capitalCity: '',
