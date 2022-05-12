@@ -1,6 +1,8 @@
 import axios from 'axios';
 export const GET_COUNTRIES = 'GET_COUNTRIES';
 export const GET_COUNTRY = 'GET_COUNTRY';
+export const SEARCH_COUNTRIES = 'SEARCH_COUNTRIES';
+export const POST_ACTIVITY = 'POST_ACTIVITY';
 
 export function getCountries(){
   return function(dispatch){
@@ -17,3 +19,32 @@ export function getCountry(id){
     .catch(err => console.log(err))
   }
 };
+
+export function searchCountries(name){
+  return function(dispatch){
+    axios.get(`http://localhost:3001/countries?name=${name}`)
+    .then(countries => dispatch({type: SEARCH_COUNTRIES, payload: countries.data}))
+    .catch(err => console.log(err))
+  }
+};
+
+export function postActivity(obj){
+  return function(dispatch){
+    axios.post('http://localhost:3001/activity', {
+      name: obj.name,
+      length: obj.length,
+      difficulty: obj.difficulty,
+      season: obj.season,
+      countries: obj.ids
+    }).then(data => dispatch({type: POST_ACTIVITY, payload: data.data}))
+    .catch(err => console.log(err))
+  }
+};
+
+// {
+//   "name": "asd",
+//   "length": 1,
+//   "difficulty": 3,
+//   "season": "Summer",
+//   "countries": ["ARG", "BWA", "PER"]
+// }

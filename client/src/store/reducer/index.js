@@ -1,7 +1,8 @@
-import { GET_COUNTRIES, GET_COUNTRY } from "../actions";
+import { GET_COUNTRIES, GET_COUNTRY, POST_ACTIVITY, SEARCH_COUNTRIES } from "../actions";
 const initialState = {
   countries: [],
-  country: {}
+  country: {},
+  filteredCountries: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -15,6 +16,15 @@ const reducer = (state = initialState, action) => {
       return{
         ...state,
         country: action.payload
+      }
+    case SEARCH_COUNTRIES:
+      return{
+        ...state,
+        filteredCountries: action.payload
+      }
+    case POST_ACTIVITY:
+      return {
+        ...state
       }
     default:
       return state;
