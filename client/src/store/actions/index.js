@@ -24,7 +24,7 @@ export function searchCountries(name){
   return function(dispatch){
     axios.get(`http://localhost:3001/countries?name=${name}`)
     .then(countries => dispatch({type: SEARCH_COUNTRIES, payload: countries.data}))
-    .catch(err => console.log(err))
+    .catch(err => dispatch({type: SEARCH_COUNTRIES, payload: []}))
   }
 };
 
