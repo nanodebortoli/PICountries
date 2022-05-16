@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
-import { getCountry } from '../store/actions';
+import { useParams } from 'react-router-dom';
+import { getCountry } from '../../store/actions/index.js';
 
-export default function CountryDetails(props){
-  const id = props.match.params.id
-  const params = useParams();
+export default function CountryDetails(){
+  const { id } = useParams();
   let details = useSelector((state) => state.country);
   let dispatch = useDispatch();
   useEffect(() => {
@@ -19,6 +18,6 @@ export default function CountryDetails(props){
     <h3>Subregion: {details.subregion}</h3>
     <h3>Area: {details.area} km2</h3>
     <h3>Population: {details.population} people</h3>
-    <h3>Activities: <ul>{details.activities ? details.activities.map(a => {return <li key={a.id}>{a.name}</li>}) : null}</ul></h3>
+    <h3>Activities: <ul>{details.activities ? details.activities.map(a => {return <li key={a.id}>Activity: {a.name} Length: {a.length} Difficulty: {a.difficulty} Season: {a.season}</li>}) : null}</ul></h3>
   </div>
 }

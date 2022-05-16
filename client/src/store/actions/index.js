@@ -3,6 +3,8 @@ export const GET_COUNTRIES = 'GET_COUNTRIES';
 export const GET_COUNTRY = 'GET_COUNTRY';
 export const SEARCH_COUNTRIES = 'SEARCH_COUNTRIES';
 export const POST_ACTIVITY = 'POST_ACTIVITY';
+export const FILTER_COUNTRIES = 'FILTER_COUNTRIES';
+export const SORT = 'SORT';
 
 export function getCountries(){
   return function(dispatch){
@@ -41,10 +43,14 @@ export function postActivity(obj){
   }
 };
 
-// {
-//   "name": "asd",
-//   "length": 1,
-//   "difficulty": 3,
-//   "season": "Summer",
-//   "countries": ["ARG", "BWA", "PER"]
-// }
+export function filterCountries(continent){
+  return function(dispatch){
+    dispatch({type: FILTER_COUNTRIES, payload: continent})
+  }
+};
+
+export function sort(method){
+  return function(dispatch){
+    dispatch({type: SORT, payload: method})
+  }
+};

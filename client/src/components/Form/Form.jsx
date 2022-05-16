@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { getCountries, postActivity } from "../store/actions";
+import { getCountries, postActivity } from "../../store/actions/index.js";
 
 export default function Form(){
   let dispatch = useDispatch();
