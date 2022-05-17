@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+.main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Ubuntu', sans-serif;
+}
+.button{
+  border-radius: 6px;
+  background-color: rgb(0, 66, 37);
+  color: ivory;
+  width: fit-content;
+  padding: 5px;
+  text-decoration: none;
+}

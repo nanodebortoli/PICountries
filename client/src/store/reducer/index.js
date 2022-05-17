@@ -21,7 +21,7 @@ const reducer = (state = initialState, action) => {
     case SEARCH_COUNTRIES:
       return{
         ...state,
-        countries: action.payload
+        countries: action.payload.sort((a, b) => a.name.localeCompare(b.name))
       }
     case POST_ACTIVITY:
       return{

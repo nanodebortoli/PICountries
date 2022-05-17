@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+.back{
+  height: 60px;
+  background-color: rgb(0, 66, 37);
+  display: flex;
+}
+.buttons{
+  font-family: 'Ubuntu', sans-serif;
+  display: flex;
+  font-size: large;
+  color: ivory;
+  width: fit-content;
+  height: 60px;
+  padding-left: 14px;
+  align-items: center;
+  text-decoration-line: none;
+}
+.logo{
+  width: 40px;
+  height: 40px;
+  padding-left: 14px;
+  padding-top: 10px;
+}

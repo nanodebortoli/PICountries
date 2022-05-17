@@ -1,0 +1,9 @@
+.main{
+  display: inline-block;
+  margin: 20px;
+  background-color: rgb(0, 66, 37);
+  color: ivory;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+}
