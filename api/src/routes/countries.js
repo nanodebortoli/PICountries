@@ -26,11 +26,11 @@ const router = Router();
   }
   })
 })();
-router.get('/', async (req, res, next) => {
+router.get('/', (req, res, next) => {
   const { name } = req.query;
   try{
-    if(!name) Country.findAll().then(country => {return res.json(country)})
-    else Country.findAll({where: {name: {[Op.iLike]: '%' + name + '%'}}})
+    if(!name) Country.findAll({include: Activity}).then(country => {return res.json(country)})
+    else Country.findAll({where: {name: {[Op.iLike]: '%' + name + '%'}}}, {include: Activity})
       .then(country => {if(country.length === 0) return res.status(400).send('El pais ingresado no existe');
       return res.json(country)})
   }

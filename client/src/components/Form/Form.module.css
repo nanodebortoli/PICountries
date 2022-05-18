@@ -1,0 +1,30 @@
+.main{
+  background-color: rgb(0, 66, 37);
+  color: ivory;
+  text-align: center;
+}
+.label{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.input{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.error{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.selected{
+  margin: 5px;
+  padding: 3px;
+  border: 3px solid ivory;
+  border-radius: 6px;
+  background-color: ivory;
+}

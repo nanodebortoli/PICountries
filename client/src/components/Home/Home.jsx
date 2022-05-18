@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCountries } from '../../store/actions/index.js';
+import { getActivities, getCountries } from '../../store/actions/index.js';
 import Country from '../Country/Country.jsx';
 import { Link, useParams } from 'react-router-dom';
 import styles from './Home.module.css';
@@ -9,6 +9,7 @@ export default function Home(){
   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCountries());
+    dispatch(getActivities());
   }, []);
   const { page } = useParams();
   let countries = useSelector((state) => state.countries);
