@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { Activity } = require('../db')
+const { Country, Activity, CountriesActivities } = require('../db')
 
 
 const router = Router();
@@ -14,11 +14,23 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
-  const { name, length, difficulty, season, countries} = req.body;
+  console.log(req.body)
+  const { name, lengthD, difficulty, season, countries} = req.body;
   try{
-    const act = await Activity.create({name, length, difficulty, season});
-    countries.map(async (country) => await act.setCountries(country))
-    return res.send('Actividad creada con exito');
+    let activityList = await Activity.findAll({where: {name: name}})
+    if(activityList.length){
+      let getId = await CountriesActivities.findAll({where: {"activityId": activityList[0].id}})
+      const prevCountries = getId.map(act => act.countryId);
+      allCountries = [...prevCountries, ...countries];
+      await CountriesActivities.destroy({where: {"activityId": activityList[0].id}})
+    }
+    else allCountries = countries;
+    let activity = await Activity.findOrCreate({where: {name: name}, defaults: {name, lengthD, difficulty, season}});
+    allCountries.map(async(countryId) => {
+      const country = await Country.findByPk(countryId);
+      await activity[0].setCountries(country)
+    })
+    return res.send(activity[0]);
   }
   catch(err){
     next(err);

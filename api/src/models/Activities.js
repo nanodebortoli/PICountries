@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
         max: 5
       }
     },
-    length: {
+    lengthD: {
       type: DataTypes.INTEGER
     },
     season: {

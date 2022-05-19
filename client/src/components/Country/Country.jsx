@@ -5,9 +5,10 @@ export default function Country({ id, name, continent, flag }){
   return(
   <div className={styles.main}>
     <img src={flag} alt={`${name} flag`}/>
-    <h1><Link to={`/countries/${id}`}>{name}</Link></h1>
-    <h3>Continent: {continent}</h3>
-    <br/>
+    <div className={styles.container}>
+      <h1 className={styles.name}><Link to={`/countries/${id}`} className={styles.name}>{name}</Link></h1>
+      <h3>Continent: {continent}</h3>
+    </div>
   </div>
   )
 }

@@ -10,26 +10,26 @@
 .search{
   background-color: rgb(0, 66, 37);
   color: ivory;
-  height: 30px;
+  height: 35px;
   width: 215px;
   border: 3px solid ivory;
   border-radius: 6px;
   margin-right: 14px;
-  margin-top: 10px;
+  margin-top: 16px;
 }
 .filterdiv{
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-evenly;
   align-items: center;
-  height: 60px;
+  height: 75px;
 }
 .labeldiv{
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-evenly;
   align-items: center;
-  height: 60px;
+  height: 75px;
 }
 .filters{
   padding-right: 5px;
@@ -40,6 +40,5 @@
 }
 .labels{
   color: ivory;
-  /* padding-top: 9px; */
   padding-right: 5px;
 }

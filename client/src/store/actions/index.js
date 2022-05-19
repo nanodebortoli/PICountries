@@ -44,7 +44,7 @@ export function postActivity(obj){
   return function(dispatch){
     axios.post('http://localhost:3001/activity', {
       name: obj.name,
-      length: obj.length,
+      lengthD: obj.lengthD,
       difficulty: obj.difficulty,
       season: obj.season,
       countries: obj.ids

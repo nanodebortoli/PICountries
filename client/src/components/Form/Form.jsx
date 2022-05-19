@@ -9,6 +9,7 @@ export default function Form(){
   const [state, setState] = useState({countries: [], ids: [], difficulty: 1});
   const [errors, setErrors] = useState({name: 'Name must not be empty', lengthD: 'Length must not be empty', season: 'You must select a season', countries: 'You must select at least one country'});
   useEffect(() => dispatch(getCountries()), [])
+  console.log(state)
   function handleChange(e){
     if(e.target.name !== 'countries'){
       setState({
@@ -47,26 +48,30 @@ export default function Form(){
     setState({name: '', difficulty: 1, lengthD: '', season: '', countries: [], ids: []});
   }
   return <form onSubmit={(e) => handleSubmit(e)} className={styles.main}>
-    <div className={styles.label}>
+    <div className={styles.entry}>
       <label>Name</label>
-      <label>Difficulty</label>
-      <label>Length</label>
-      <label>Season</label>
-      <label>Countries</label>
-    </div>
-    <div className={styles.input}>
       <input onChange={(e) => handleChange(e)} type='text' name='name' value={state.name}/>
+      <span>{errors.name ? errors.name : null}</span> 
+    </div>
+    <div className={styles.entry}>
+      <label>Difficulty</label>
       <input onChange={(e) => handleChange(e)} type='range' min='1' max='5' name='difficulty' value={state.difficulty}/> <span>{state.difficulty}</span> 
+      <span>{errors.difficulty ? errors.difficulty : null}</span>
+    </div>
+    <div className={styles.entry}>
+      <label>Length</label>
       <input onChange={(e) => handleChange(e)} type='text' name='lengthD' value={state.lengthD}/>
+      <span>{errors.lengthD ? errors.lengthD : null}</span>
+    </div>
+    <div className={styles.entry}>
+      <label>Season</label>
       <select onChange={(e) => handleChange(e)} name='season' value={state.season}><option value=''>Please select a season</option> <option value='Summer'>Summer</option> <option value='Fall'>Fall</option> <option value='Winter'>Winter</option><option value='Spring'>Spring</option> </select>
+      <span>{errors.season ? errors.season : null}</span>
+    </div>
+    <div className={styles.entry}>
+      <label>Countries</label>
       <p>Selected countries: {state.countries.map(country => {return <button value={state.ids[state.countries.indexOf(country)]} className={styles.selected} onClick={(e) => deleteCountry(e)}>{country}</button>})}</p>
       <select onChange={(e) => handleChange(e)} name='countries' value={state.countries}><option value=''>Please select a country</option>{countryList.map(country => {return <option key={country.id} id={country.id} value={country.name}>{country.name}</option>})}</select>
-    </div>
-    <div className={styles.error}>
-      <span>{errors.name ? errors.name : null}</span> 
-      <span>{errors.difficulty ? errors.difficulty : null}</span>
-      <span>{errors.lengthD ? errors.lengthD : null}</span>
-      <span>{errors.season ? errors.season : null}</span>
       <span>{errors.countries ? errors.countries : null}</span>
     </div>
     <input onChange={(e) => handleChange(e)} type='submit' value='Create activity' disabled={Object.keys(errors).length > 0 ? true : false}/>

@@ -19,14 +19,14 @@ function App() {
       <Route>
         <NavBar />
         <Switch>
-          <Route path='/home/:page'>
+          <Route exact path='/home'>
             <SearchBar />
             <Home />
           </Route>
           <Route path='/countries/:id'>
             <CountryDetails />
           </Route>
-          <Route path='/form'>
+          <Route exact path='/form'>
             <Form />
           </Route>
           <Route path='*'>
