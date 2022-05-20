@@ -28,7 +28,7 @@ export default function SearchBar(){
     </div>
     <div className={styles.filterdiv}>
       <select onChange={(e) => onChangeSelect(e)} name='continent' className={styles.filters}> <option value=''>Select a continent</option> <option value='Africa'>Africa</option> <option value='Antarctica'>Antarctica</option> <option value='Asia'>Asia</option> <option value='Europe'>Europe</option> <option value='North America'>North America</option> <option value='Oceania'>Oceania</option> <option value='South America'>South America</option> </select>
-      <select onChange={(e) => onChangeAct(e)} name='activity' className={styles.filters}> <option value=''>Select an activity</option> {activities.map(activity => {return <option value={activity.name}>{activity.name}</option>})} </select>
+      <select onChange={(e) => onChangeAct(e)} name='activity' className={styles.filters}> <option value=''>Select an activity</option> {activities.map(activity => {return <option key={activity.id} value={activity.name}>{activity.name}</option>})} </select>
       <select onChange={(e) => onChangeSort(e)} name='sort' className={styles.filters}> <option value='az'>A-Z</option> <option value='za'>Z-A</option> <option value='popAsc'>Population asc</option> <option value='popDes'>Population des</option> </select>
     </div>
   </div>

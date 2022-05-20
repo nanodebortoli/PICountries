@@ -22,8 +22,7 @@ export default function Home(){
   if(page === 1) countriesPerPage = countries.slice(0, 9); //en la primera página solo se muestran 9 paises
   else countriesPerPage = countries.slice(((page) * 10) - 11, ((page + 1) * 10) - 11); 
 
-  let maxPages = Math.ceil(countries.length / 10); 
-  if(countries.length % 10 === 0) maxPages++; //arregla el bug de que no se muestra la ultima pagina si la cantidad de paises es un multiplo de 10
+  let maxPages = Math.floor(countries.length / 10) + 1;
   
   function prevPage(){
     if(page > 1) setPage(page - 1);
@@ -36,7 +35,9 @@ export default function Home(){
     <div className={styles.navCont}><button onClick={prevPage} className={styles.navBtn}>Prev</button> <div className={styles.nav}>{page}</div> <button onClick={nextPage} className={styles.navBtn}>Next</button></div>
     {countriesPerPage.map((country) => {return <Country key={country.id} id={country.id} name={country.name} continent={country.continent} flag={country.flag}/>})}
   </div>
-  else return <div className={styles.notFound}>
-    The country does not exist.
-  </div>
+  else{
+    return <div className={styles.notFound}>
+      The country does not exist.
+    </div>
+  }
 }
