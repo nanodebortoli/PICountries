@@ -9,12 +9,15 @@ export default function CountryDetails(){
   const { id } = useParams();
   let details = useSelector((state) => state.country);
   let dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getCountry(id))
   }, [])
+
   function notFound(){
     return <NotFound />
   }
+  
   if(Object.keys(details).length) {return <div className={styles.main}>
     <img src={details.flag} alt={`${details.name} flag`}/>
     <h1>Name: {details.name}</h1>

@@ -6,8 +6,9 @@ import styles from './Home.module.css';
 
 export default function Home(){
   let dispatch = useDispatch();
-  const [page, setPage] = useState(1);
   let countries = useSelector((state) => state.countries);
+
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     dispatch(getCountries());
@@ -23,7 +24,7 @@ export default function Home(){
   else countriesPerPage = countries.slice(((page) * 10) - 11, ((page + 1) * 10) - 11); 
 
   let maxPages = Math.floor(countries.length / 10) + 1;
-  
+
   function prevPage(){
     if(page > 1) setPage(page - 1);
   }

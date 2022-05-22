@@ -5,20 +5,25 @@ import styles from './SearchBar.module.css';
 export default function SearchBar(){
   let dispatch = useDispatch();
   let activities = useSelector(state => state.activities)
+
   function onChange(e){
     dispatch(searchCountries(e.target.value))
   }
+
   function onChangeSelect(e){
     if(!e.target.value) dispatch(getCountries());
     else dispatch(filterCountries(e.target.value));
   }
+
   function onChangeAct(e){
     if(!e.target.value) dispatch(getCountries());
     else dispatch(filterByAct(e.target.value))
   }
+
   function onChangeSort(e){
     dispatch(sort(e.target.value));
   }
+  
   return <div className={styles.bar}>
     <input onChange={(e) => onChange(e)} placeholder='Insert a country...' className={styles.search}/>
     <div className={styles.labeldiv}>

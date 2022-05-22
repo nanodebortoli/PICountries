@@ -5,10 +5,13 @@ import styles from './Form.module.css';
 
 export default function Form(){
   let dispatch = useDispatch();
-  let countryList = useSelector((state) => state.countries)
+  let countryList = useSelector((state) => state.countries);
+
   const [state, setState] = useState({countries: [], ids: [], difficulty: 1});
   const [errors, setErrors] = useState({name: 'Name must not be empty', lengthD: 'Length must not be empty', season: 'You must select a season', countries: 'You must select at least one country'});
+  
   useEffect(() => dispatch(getCountries()), []);
+
   function handleChange(e){
     if(e.target.name !== 'countries'){
       setState({
@@ -25,12 +28,14 @@ export default function Form(){
       [e.target.name]: e.target.value
     }))
   }
+
   function deleteCountry(e){
     e.preventDefault();
     state.countries = state.countries.filter(country => country !== e.target.textContent);
     state.ids = state.ids.filter(country => country !== e.target.value);
     setErrors(formValidator(state));
   }
+
   function formValidator(value){
     let errors = {};
     if(!value.name) errors.name = 'Name must not be empty';
@@ -42,11 +47,13 @@ export default function Form(){
     if(value.countries.length === 0) errors.countries = 'You must select at least one country';
     return errors;
   }
+
   function handleSubmit(e){
     e.preventDefault();
     dispatch(postActivity(state));
     setState({name: '', difficulty: 1, lengthD: '', season: '', countries: [], ids: []});
   }
+  
   return <form onSubmit={(e) => handleSubmit(e)} className={styles.main}>
     <div className={styles.entry}>
       <label className={styles.item}>Name</label>
