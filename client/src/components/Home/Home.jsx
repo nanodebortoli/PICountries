@@ -34,7 +34,10 @@ export default function Home(){
     if(page < maxPages) setPage(page + 1);
   }
 
-  if(loading === true) return <div className={styles.notFound}>Loading...</div>
+  if(loading === true) return <div className={styles.notFound}>
+    <img src={process.env.PUBLIC_URL + '/loading.gif'} alt='loading' className={styles.loading}/>
+    Loading...
+    </div>
   else {
     if(countries.length){
       return <div className={styles.container}>

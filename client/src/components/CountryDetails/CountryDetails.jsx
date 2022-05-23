@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getCountry, setLoader } from '../../store/actions/index.js';
 import styles from './CountryDetails.module.css';
-import NotFound from '../NotFound/NotFound.jsx';
 
 export default function CountryDetails(){
   const { id } = useParams();
@@ -16,7 +15,10 @@ export default function CountryDetails(){
     return dispatch(setLoader());
   }, [])
   
-  if(loading === true) return <div className={styles.loading}>Loading...</div>
+  if(loading === true) return <div className={styles.loading}>
+    <img src={process.env.PUBLIC_URL + '/loading.gif'} alt='loading' className={styles.gif}/>
+    Loading...
+    </div>
   else {
     if(Object.keys(details).length){
       return <div className={styles.main}>
@@ -31,7 +33,7 @@ export default function CountryDetails(){
     </div>
     }
     else{
-      return <NotFound />
+      return null;
     }
   }
 }

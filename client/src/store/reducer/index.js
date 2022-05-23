@@ -33,6 +33,7 @@ const reducer = (state = initialState, action) => {
         activities: action.payload
       }
     case POST_ACTIVITY:
+      console.log(state.activities)
       return{
         ...state
       }

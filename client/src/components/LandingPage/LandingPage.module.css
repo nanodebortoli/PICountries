@@ -8,6 +8,7 @@
   flex-direction: column;
   align-items: center;
   font-family: 'Ubuntu', sans-serif;
+  padding-top: 150px;
 }
 .button{
   border-radius: 6px;

@@ -40,6 +40,11 @@ body{
   font-family: 'Ubuntu', sans-serif;
   color: ivory;
   display: flex;
-  justify-content: center;
   margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+.loading{
+  width: 200px;
+  filter: invert(100%);
 }
