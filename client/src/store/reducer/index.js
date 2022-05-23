@@ -1,9 +1,10 @@
-import { GET_COUNTRIES, GET_COUNTRY, POST_ACTIVITY, SEARCH_COUNTRIES, GET_ACTIVITIES, FILTER_COUNTRIES, SORT, FILTER_ACTIVITY } from "../actions";
+import { GET_COUNTRIES, GET_COUNTRY, POST_ACTIVITY, SEARCH_COUNTRIES, GET_ACTIVITIES, FILTER_COUNTRIES, SORT, FILTER_ACTIVITY, SET_LOADER } from "../actions";
 const initialState = {
   allCountries: [], //cuando se filtra se cambia el array countries asi que allcountries es un array que siempre va a tener todos los paises
   countries: [],
   country: {},
-  activities: []
+  activities: [],
+  loading: true
 }
 
 const reducer = (state = initialState, action) => {
@@ -12,12 +13,14 @@ const reducer = (state = initialState, action) => {
       return{
         ...state,
         countries: action.payload.sort((a, b) => a.name.localeCompare(b.name)), //por defecto son ordenados a-z
-        allCountries: action.payload
+        allCountries: action.payload,
+        loading: false
       }
     case GET_COUNTRY:
       return{
         ...state,
-        country: action.payload
+        country: action.payload,
+        loading: false
       }
     case SEARCH_COUNTRIES:
       return{
@@ -52,6 +55,12 @@ const reducer = (state = initialState, action) => {
       return{
         ...state,
         countries: state.allCountries.filter(country => country.activities.some(act => act.name ? act.name === action.payload : null))
+      }
+    case SET_LOADER:
+      return{
+        ...state,
+        loading: true,
+        country: {}
       }
     default:
       return state;

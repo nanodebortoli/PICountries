@@ -16,3 +16,10 @@
   color:  ivory;
   text-decoration: none;
 }
+.flag{
+  max-height: 280px;
+}
+.main:hover{
+  box-shadow: 1px 1px 2px ivory;
+  transform: scale(1.01)
+}

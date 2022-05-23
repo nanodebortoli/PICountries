@@ -52,8 +52,9 @@ export default function Form(){
     e.preventDefault();
     dispatch(postActivity(state));
     setState({name: '', difficulty: 1, lengthD: '', season: '', countries: [], ids: []});
+    setErrors(formValidator({name: '', difficulty: 1, lengthD: '', season: '', countries: [], ids: []}));
   }
-  
+
   return <form onSubmit={(e) => handleSubmit(e)} className={styles.main}>
     <div className={styles.entry}>
       <label className={styles.item}>Name</label>

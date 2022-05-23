@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getActivities, getCountries } from '../../store/actions/index.js';
+import { getActivities, getCountries, setLoader } from '../../store/actions/index.js';
 import Country from '../Country/Country.jsx';
 import styles from './Home.module.css';
 
 export default function Home(){
   let dispatch = useDispatch();
   let countries = useSelector((state) => state.countries);
+  let loading = useSelector((state) => state.loading);
 
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     dispatch(getCountries());
     dispatch(getActivities());
+    return dispatch(setLoader());
   }, []);
 
   useEffect(() => {
@@ -32,13 +34,18 @@ export default function Home(){
     if(page < maxPages) setPage(page + 1);
   }
 
-  if(countries.length) return <div className={styles.container}>
-    <div className={styles.navCont}><button onClick={prevPage} className={styles.navBtn}>Prev</button> <div className={styles.nav}>{page}</div> <button onClick={nextPage} className={styles.navBtn}>Next</button></div>
-    {countriesPerPage.map((country) => {return <Country key={country.id} id={country.id} name={country.name} continent={country.continent} flag={country.flag}/>})}
-  </div>
-  else{
-    return <div className={styles.notFound}>
-      The country does not exist.
-    </div>
+  if(loading === true) return <div className={styles.notFound}>Loading...</div>
+  else {
+    if(countries.length){
+      return <div className={styles.container}>
+        <div className={styles.navCont}><button onClick={prevPage} className={styles.navBtn}>Prev</button> <div className={styles.nav}>{page}</div> <button onClick={nextPage} className={styles.navBtn}>Next</button></div>
+        {countriesPerPage.map((country) => {return <Country key={country.id} id={country.id} name={country.name} continent={country.continent} flag={country.flag}/>})}
+      </div>
+    }
+    else {
+      return <div className={styles.notFound}>
+        The country does not exist.
+      </div>
+    }
   }
 }

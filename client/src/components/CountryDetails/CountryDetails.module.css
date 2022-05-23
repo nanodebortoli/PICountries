@@ -19,3 +19,10 @@
   margin-bottom: 5px;
   list-style-type: none;
 }
+.loading{
+  font-family: 'Ubuntu', sans-serif;
+  color: ivory;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

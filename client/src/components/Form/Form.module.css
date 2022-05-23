@@ -33,9 +33,18 @@
   margin-top: 15px;
   font-family: 'Ubuntu', sans-serif;
 }
-.send{
+.send:enabled{
+  font-family: 'Ubuntu', sans-serif;
+  color: black;
   margin: 0 auto;
   background-color: ivory;
   border: 3px solid ivory;
+  border-radius: 6px;
+  cursor:pointer
+}
+.send:disabled{
+  font-family: 'Ubuntu', sans-serif;
+  color: #aaa;
+  margin: 0 auto;
   border-radius: 6px;
 }

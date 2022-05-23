@@ -7,6 +7,7 @@ export const POST_ACTIVITY = 'POST_ACTIVITY';
 export const FILTER_COUNTRIES = 'FILTER_COUNTRIES';
 export const SORT = 'SORT';
 export const FILTER_ACTIVITY = 'FILTER_ACTIVITY';
+export const SET_LOADER = 'SET_LOADER';
 
 export function getCountries(){
   return function(dispatch){
@@ -28,7 +29,7 @@ export function searchCountries(name){
   return function(dispatch){
     axios.get(`http://localhost:3001/countries?name=${name}`)
     .then(countries => dispatch({type: SEARCH_COUNTRIES, payload: countries.data}))
-    .catch(err => dispatch({type: SEARCH_COUNTRIES, payload: []}))
+    .catch(dispatch({type: SEARCH_COUNTRIES, payload: []}))
   }
 };
 
@@ -69,4 +70,10 @@ export function filterByAct(act){
   return function(dispatch){
     dispatch({type: FILTER_ACTIVITY, payload: act})
   }
-}
+};
+
+export function setLoader(){
+  return function(dispatch){
+    dispatch({type: SET_LOADER, payload: true})
+  }
+};
