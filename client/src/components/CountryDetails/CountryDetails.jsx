@@ -25,6 +25,7 @@ export default function CountryDetails(){
       <img src={details.flag} alt={`${details.name} flag`}/>
       <h1>Name: {details.name}</h1>
       <h3>Code: {details.id}</h3>
+      <h3>Continent: {details.continent}</h3>
       <h3>Capital city: {details.capitalCity}</h3>
       <h3>Subregion: {details.subregion}</h3>
       <h3>Area: {details.area} km<sup>2</sup></h3>

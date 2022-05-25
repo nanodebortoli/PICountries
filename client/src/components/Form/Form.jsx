@@ -38,7 +38,7 @@ export default function Form(){
 
   function formValidator(value){
     let errors = {};
-    if(!value.name) errors.name = 'Name must not be empty';
+    if(!value.name || !value.name.trim().length) errors.name = 'Name must not be empty';
     else if(!/^[A-Za-z\s]+$/.test(value.name)) errors.name = 'Name is invalid';
     if(!value.difficulty) errors.difficulty = 'You must select a difficulty level';
     if(!value.lengthD) errors.lengthD = 'Length must not be empty';
