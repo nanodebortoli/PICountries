@@ -11,7 +11,7 @@ export const SET_LOADER = 'SET_LOADER';
 
 export function getCountries(){
   return function(dispatch){
-    axios.get('http://localhost:3001/countries')
+    axios.get('https://picountries.onrender.com/countries')
     .then(countries => dispatch({type: GET_COUNTRIES, payload: countries.data}))
     .catch(err => console.log(err))
   }
@@ -19,7 +19,7 @@ export function getCountries(){
 
 export function getCountry(id){
   return function(dispatch){
-    axios.get(`http://localhost:3001/countries/${id}`)
+    axios.get(`https://picountries.onrender.com/countries/${id}`)
     .then(country => dispatch({type: GET_COUNTRY, payload: country.data}))
     .catch(err => console.log(err))
   }
@@ -27,7 +27,7 @@ export function getCountry(id){
 
 export function searchCountries(name){
   return function(dispatch){
-    axios.get(`http://localhost:3001/countries?name=${name}`)
+    axios.get(`https://picountries.onrender.com/countries?name=${name}`)
     .then(countries => dispatch({type: SEARCH_COUNTRIES, payload: countries.data}))
     .catch(dispatch({type: SEARCH_COUNTRIES, payload: []}))
   }
@@ -35,7 +35,7 @@ export function searchCountries(name){
 
 export function getActivities(){
   return function(dispatch){
-    axios.get('http://localhost:3001/activity')
+    axios.get('https://picountries.onrender.com/activity')
     .then(data => dispatch({type: GET_ACTIVITIES, payload: data.data}))
     .catch(err => console.log(err))
   }
@@ -43,7 +43,7 @@ export function getActivities(){
 
 export function postActivity(obj){
   return function(dispatch){
-    axios.post('http://localhost:3001/activity', {
+    axios.post('https://picountries.onrender.com/activity', {
       name: obj.name,
       lengthD: obj.lengthD,
       difficulty: obj.difficulty,
